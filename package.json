@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Douile/royale-bot-rewritten#readme",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "pg": "^7.4.3"
   }
 }
