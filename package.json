@@ -1,6 +1,6 @@
 {
   "name": "royale-bot-rewritten",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "RoyaleBot is a discord bot centered around Fortnite allowing its users to recieve automatic updates and check their stats.",
   "main": "index.js",
   "scripts": {
