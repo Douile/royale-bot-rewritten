@@ -43,6 +43,7 @@ const client = discord.Client({
 const pgClient = new PGClient(process.env.DATABASE_URL);
 
 client.on('message',(message) => {
+  if (!message.guild) return 0;
   pgClient.serverSmall(message.guild.id).then((server) => {
     let prefixes = [
       server.prefix,
