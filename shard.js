@@ -1,6 +1,7 @@
 const discord = require('discord.js');
 const PGClient = require('./PGClient.js');
 const { CommandHandler } = require('./util/command.js');
+const { registerCommands } = require('./commands/all.js');
 
 const client = discord.Client({
   'shardId': process.env.SHARD_ID,
@@ -18,6 +19,7 @@ const client = discord.Client({
 })
 client.pgClient = new PGClient(process.env.DATABASE_URL);
 const commandHandler = new CommandHandler({ 'dynamicPrefix': true, 'verboose': true });
+registerCommands(commandHandler);
 
 client.on('message',(message) => {
   if (!message.guild) return 0;
