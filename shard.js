@@ -1,30 +1,6 @@
 const discord = require('discord.js');
-const pg = require('pg');
-const prefix = require('./util/prefix.js');
-
-class PGClient extends pg.Client {
-  // A expansion of pg.Client in order for ease of use
-  constructor(dburl) {
-    super({
-      'connectionString': dburl
-    })
-  }
-  serverSmall(serverId) {
-    // get server data from databse via snowflake id
-    return new Promise((resolve,reject) => {
-      this.query({
-        'text':'SELECT server_id,prefix,locale WHERE server_id=$1::text',
-        'values': [serverId],
-        'rowMode':'array'}).then((res) => {
-        if (res.rowCount > 0) {
-          resolve(res.rows[0]);
-        } else {
-          reject('Not found');
-        }
-      }).catch(reject);
-    })
-  }
-}
+const PGClient = require('PGClient.js');
+const { CommandHandler } = require('./util/command.js');
 
 const client = discord.Client({
   'shardId': process.env.SHARD_ID,
