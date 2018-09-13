@@ -17,22 +17,16 @@ const client = discord.Client({
   ]
 })
 const pgClient = new PGClient(process.env.DATABASE_URL);
+const commandHandler = new CommandHandler({ 'dynamicPrefix': true, 'verboose': true });
 
 client.on('message',(message) => {
   if (!message.guild) return 0;
   pgClient.serverSmall(message.guild.id).then((server) => {
-    let prefixes = [
-      server.prefix,
-      `<@${message.client.user.id}>`
-    ];
-    var match = prefix.testPrefixes(message.content,prefixes);
-    if (match !== false) {
-      if (match === server.prefix) {
-        // pass to command handler
-      } else {
-        // pass to special handler
-      }
-    }
+    // let prefixes = [
+    //   server.prefix,
+    //   `<@${message.client.user.id}>`
+    // ];
+    commandHandler.handle(server.prefix,message,server.locale);
   }).catch(console.error);
 })
 
