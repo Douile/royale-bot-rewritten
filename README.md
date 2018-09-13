@@ -6,6 +6,7 @@ This is a WIP rewrite of RoyaleBot aiming to improve memory efficiency, speed an
 
 ## Can I run my own private version of RoyaleBot
 It is possible to run a local version of RoyaleBot.
+
 You must set the following ENV variables before runtime:
 
 - `TOKEN` - Your [discord api](https://discordapp.com/developers/applications/) bot token
