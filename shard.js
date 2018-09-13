@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const PGClient = require('PGClient.js');
+const PGClient = require('./PGClient.js');
 const { CommandHandler } = require('./util/command.js');
 
 const client = discord.Client({
