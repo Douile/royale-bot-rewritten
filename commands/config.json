@@ -1,0 +1,87 @@
+{
+  "commands": [
+    {
+      "name": "help",
+      "description_key": "",
+      "description_arguments": ["module"],
+      "module": null,
+      "file": "./help.js"
+    },
+    {
+      "name": "setprefix",
+      "description_key": "",
+      "description_arguments": ["prefix"],
+      "module": null,
+      "file": "./setprefix.js"
+    },
+    {
+      "name": "setlocale",
+      "description_key": "",
+      "description_arguments": [],
+      "module": null,
+      "file": "./setlocale.js"
+    },
+    {
+      "name": "channels",
+      "description_key": "",
+      "description_arguments": [],
+      "module": null,
+      "file": "./channels.js"
+    },
+    {
+      "name": "setchannel",
+      "description_key": "",
+      "description_arguments": ["type"],
+      "module": null,
+      "file": "./setchannel.js"
+    },
+    {
+      "name": "resetchannels",
+      "description_key": "",
+      "description_arguments": ["type"],
+      "module": null,
+      "file": "./resetchannels.js"
+    },
+    {
+      "name": "shop",
+      "description_key": "",
+      "description_arguments": [],
+      "module": "fortnite",
+      "file": "./fortnite/shop.js"
+    },
+    {
+      "name": "upcoming",
+      "description_key": "",
+      "description_arguments": [],
+      "module": "fortnite",
+      "file": "./fortnite/upcoming.js"
+    },
+    {
+      "name": "stats",
+      "description_key": "",
+      "description_arguments": ["platform","user"],
+      "module": "fortnite",
+      "file": "./fortnite/stats.js"
+    },
+    {
+      "name": "link",
+      "description_key": "",
+      "description_arguments": ["platform","user"],
+      "module": "fortnite",
+      "file": "./fortnite/link.js"
+    },
+    {
+      "name": "unlink",
+      "description_key": "",
+      "description_arguments": [],
+      "module": "fortnite",
+      "file": "./fortnite/unlink.js"
+    }
+  ],
+  "modules": [
+    {
+      "name": "Fortnite",
+      "description_key": ""
+    }
+  ]
+}
