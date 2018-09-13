@@ -16,12 +16,12 @@ const client = discord.Client({
     'VOICE_SERVER_UPDATE'
   ]
 })
-const pgClient = new PGClient(process.env.DATABASE_URL);
+client.pgClient = new PGClient(process.env.DATABASE_URL);
 const commandHandler = new CommandHandler({ 'dynamicPrefix': true, 'verboose': true });
 
 client.on('message',(message) => {
   if (!message.guild) return 0;
-  pgClient.serverSmall(message.guild.id).then((server) => {
+  message.client.pgClient.serverSmall(message.guild.id).then((server) => {
     // let prefixes = [
     //   server.prefix,
     //   `<@${message.client.user.id}>`
@@ -32,7 +32,7 @@ client.on('message',(message) => {
 
 client.login(process.env.CLIENT_TOKEN).then(() => {
   console.log('DClient connected');
-  pgClient.connect().then(() => {
+  client.pgClient.connect().then(() => {
     console.log('PGClient connected');
   }).catch((e) => {
     console.error('PGClient connection error',e.stack);
