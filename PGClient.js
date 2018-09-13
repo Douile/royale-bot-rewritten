@@ -1,6 +1,11 @@
 const pg = require('pg');
 
 class PGClient extends pg.Client {
+  class NotFoundError extends Error {
+    constructor(item) {
+      super(`${item} not found in the database`);
+    }
+  }
   // A expansion of pg.Client in order for ease of use
   constructor(dburl) {
     super({
@@ -17,7 +22,7 @@ class PGClient extends pg.Client {
         if (res.rowCount > 0) {
           resolve(res.rows[0]);
         } else {
-          reject('Not found');
+          reject(new PGClient.NotFoundError('server'));
         }
       }).catch(reject);
     })
@@ -31,7 +36,7 @@ class PGClient extends pg.Client {
           if (res.rowCount > 0) {
             resolve(res.rows[0]);
           } else {
-            reject('Not found');
+            reject(new PGClient.NotFoundError('server'));
           }
         }).catch(reject);
       })
@@ -46,7 +51,7 @@ class PGClient extends pg.Client {
         if (res.rowCount > 0) {
           resolve(res.rows[0]);
         } else {
-          reject('Not found');
+          reject(new PGClient.NotFoundError('server'));
         }
       }).catch(reject);
     })
@@ -60,7 +65,7 @@ class PGClient extends pg.Client {
         if (res.rowCount > 0) {
           resolve(res.rows[0]);
         } else {
-          reject('Not found');
+          reject(new PGClient.NotFoundError('server'));
         }
       }).catch(reject);
     })
@@ -81,9 +86,7 @@ class PGClient extends pg.Client {
           'rowMode': 'array'
         };
       }
-      this.query(ops).then((res) => {
-        resolve(res);
-      }).catch(reject);
+      this.query(ops).then(resolve).catch(reject);
     })
   }
   serverBackgrounds(serverId,type) {
@@ -102,8 +105,28 @@ class PGClient extends pg.Client {
           'rowMode': 'array'
         };
       }
-      this.query(ops).then((res) => {
-        resolve(res);
+      this.query(ops).then(resolve).catch(reject);
+    })
+  }
+  channelsSubscribed() {
+    return new Promise((resolve,reject) => {
+      this.query({
+        'text': 'SELECT channel_type, COUNT(channel_type) FROM server_channels GROUP BY channel_type ORDER BY COUNT(channel_type) DESC',
+        'rowMode': 'array'
+      }).then(resolve).catch(reject);
+    })
+  }
+  usersLinked() {
+    return new Promise((resolve,reject) => {
+      this.query({
+        'text': 'SELECT COUNT(DISTINCT user_id) FROM user_links',
+        'rowMode': 'array'
+      }).then((res) => {
+        if (res.rowCount > 0) {
+          resolve(res.rows[0].count);
+        } else {
+          reject(new PGClient.NotFoundError('users'));
+        }
       }).catch(reject);
     })
   }
