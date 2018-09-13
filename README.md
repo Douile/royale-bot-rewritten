@@ -15,31 +15,40 @@ You must set the following ENV variables before runtime:
 The database must be set up before runtime:
 
 **server_data**
+
 | Column | server_id | server_name | last_help_msg | last_help_channel | last_status_msg |  last_status_channel | locale | prefix | priority | premium | last_seen | next_shop | latest_shop
 |:-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-:
 | Type | text | text | text | text | text | text | text | text | smallint | boolean | integer | integer | text
 | Default | | | | | | | 'en' | '.rb ' | | false | | |
 | Not null | True | False | False | False | False | False | True | False | False | True | False | False | False
+
 **server_backgrounds**
+
 | Column | server_id | background_url | background_type
 | :- | :-: | :-: | :-:
 | Type | text | text | text
 | Not null | True | False | False
+
 **server_channels**
+
 | Column | server_id | channel_type | channel_id
 | :- | :-: | :-: | :-:
 | Type | text | text | text
 | Not null | True | True | True
+
 **user_links**
+
 | Column | user_id | user_nickname | user_platform
 | :- | :-: | :-: | :-:
 | Type | text | text | text
 | Not null | True | True | True
+
 **cache_data**
+
 | Column | type | value
 | :- | :-: | :-:
 | Type | text | text
-| Not null | True | False 
+| Not null | True | False
 
 See [initTables.sql](initTables.sql)
 
