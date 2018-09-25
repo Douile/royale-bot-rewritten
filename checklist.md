@@ -1,0 +1,48 @@
+- [ ] Shard Manager
+  - [x] Initialization
+  - [ ] Shared resources
+  - [ ] Test
+- [ ] Command handler
+  - [x] Register commands explicitly
+  - [ ] Command permissions: handle at handler or within command?
+  - [ ] Test
+- [ ] Database handler
+  - [x] Connect using env
+  - [ ] Handle errors
+  - [x] Pre-defined functions for ease of use
+  - [ ] Test
+- [ ] Global cache (shard or shard manager?) _**MEMORY USAGE VS CPU USAGE**_
+  - [ ] All data collection through cache
+  - [ ] Calls to cache define length of cache
+  - [ ] Delete old data in sweeps or when called after it exceeds time limit
+  - [ ] Test
+- [ ] Commands
+  - [ ] botinfo
+  - [ ] help
+  - [ ] management (setprefix, setlocale, setchannel etc.)
+    - [ ] Modals
+    - [ ] setprefix
+    - [ ] setchannel
+    - [ ] setlocale
+  - [ ] shop
+  - [ ] stats
+  - [ ] challenges
+  - [ ] news
+  - [ ] status
+- [ ] Image generators
+  - [ ] Stats
+    - [ ] Current season
+    - [ ] Past season
+  - [ ] Shop
+  - [ ] Upcoming
+- [ ] Embed generators
+  - [ ] status
+  - [ ] news
+  - [ ] challenges
+- [ ] Automatic updates
+  - [ ] Global chron scheduler
+  - [ ] Fetch priority + id only then loop through
+    - [ ] After loop through remaining servers on shard
+  - [ ] Fetch data for each server individually
+  - [ ] Asynchronous flow for speed
+    - [ ] Half asynchronous - limit the speed at which tasks are started as to avoid rate limiting
